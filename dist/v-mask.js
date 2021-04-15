@@ -264,7 +264,7 @@
     __nextCharOptional__: true
   };
   var defaultMaskReplacers = {
-    '#': /[a-z]/i,
+    '#': /\d/i,
     A: /[a-z]/i,
     N: /[a-z0-9]/i,
     '?': NEXT_CHAR_OPTIONAL,
@@ -301,6 +301,7 @@
   function maskToRegExpMask(mask) {
     var maskReplacers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultMaskReplacers;
     return mask.map(function (char, index, array) {
+      console.log(char);
       var maskChar = maskReplacers[char] || char;
       var previousChar = array[index - 1];
       var previousMaskChar = maskReplacers[previousChar] || previousChar;

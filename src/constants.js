@@ -12,7 +12,7 @@ export const NEXT_CHAR_OPTIONAL = {
  * @type {Object<String,RegExp|NEXT_CHAR_OPTIONAL>}
  */
 export const defaultMaskReplacers = {
-  '#': /[a-z]/i,
+  '#': /\d/i,
   A: /[a-z]/i,
   N: /[a-z0-9]/i,
   '?': NEXT_CHAR_OPTIONAL,
