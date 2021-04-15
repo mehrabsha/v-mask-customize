@@ -460,10 +460,6 @@ function createDirective() {
   return {
     bind: function bind(el, _ref) {
       var value = _ref.value;
-      console.log('bind');
-      console.log(el);
-      console.log(value);
-      console.log('---------');
       el = queryInputElementInside(el);
       updateMask(el, value, instanceMaskReplacers);
       updateValue(el);
@@ -471,6 +467,7 @@ function createDirective() {
     componentUpdated: function componentUpdated(el, _ref2) {
       var value = _ref2.value,
           oldValue = _ref2.oldValue;
+      var elVal = el.value;
 
       var p2e = function p2e(s) {
         return s.replace(/[۰-۹]/g, function (d) {
@@ -484,12 +481,9 @@ function createDirective() {
         });
       };
 
-      value = p2e(a2p(value));
-      console.log('componentUpdated');
-      console.log(el);
-      console.log(value);
-      console.log(oldValue);
-      console.log('---------');
+      elVal = p2e(a2p(elVal));
+      el.value = elVal;
+      console.log("elval => ".concat(elVal));
       el = queryInputElementInside(el);
       var isMaskChanged = isFunction(value) || maskToString(oldValue) !== maskToString(value);
 
