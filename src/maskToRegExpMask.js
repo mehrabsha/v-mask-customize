@@ -4,7 +4,6 @@ import { castToRegexp, makeRegexpOptional } from './utils/regexp';
 function maskToRegExpMask(mask, maskReplacers = defaultMaskReplacers) {
   return mask
     .map((char, index, array) => {
-      console.log(char);
       const maskChar = maskReplacers[char] || char;
       const previousChar = array[index - 1];
       const previousMaskChar = maskReplacers[previousChar] || previousChar;

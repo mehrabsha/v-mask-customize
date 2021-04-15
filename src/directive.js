@@ -119,6 +119,10 @@ export function createDirective(directiveOptions = {}) {
      * @param {?String}                        value
      */
     bind(el, { value }) {
+      console.log('bind');
+      console.log(el);
+      console.log(value);
+      console.log('---------');
       el = queryInputElementInside(el);
 
       updateMask(el, value, instanceMaskReplacers);
@@ -137,6 +141,14 @@ export function createDirective(directiveOptions = {}) {
      * @param {?String}                        oldValue
      */
     componentUpdated(el, { value, oldValue }) {
+      const p2e = (s) => s.replace(/[۰-۹]/g, (d) => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+      const a2p = (s) => s.replace(/[٠-٩]/g, (d) => '۰۱۲۳۴۵۶۷۸۹'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]);
+      value = p2e(a2p(value));
+      console.log('componentUpdated');
+      console.log(el);
+      console.log(value);
+      console.log(oldValue);
+      console.log('---------');
       el = queryInputElementInside(el);
 
       const isMaskChanged = isFunction(value)

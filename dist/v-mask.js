@@ -301,7 +301,6 @@
   function maskToRegExpMask(mask) {
     var maskReplacers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultMaskReplacers;
     return mask.map(function (char, index, array) {
-      console.log(char);
       var maskChar = maskReplacers[char] || char;
       var previousChar = array[index - 1];
       var previousMaskChar = maskReplacers[previousChar] || previousChar;
@@ -467,6 +466,10 @@
     return {
       bind: function bind(el, _ref) {
         var value = _ref.value;
+        console.log('bind');
+        console.log(el);
+        console.log(value);
+        console.log('---------');
         el = queryInputElementInside(el);
         updateMask(el, value, instanceMaskReplacers);
         updateValue(el);
@@ -474,6 +477,25 @@
       componentUpdated: function componentUpdated(el, _ref2) {
         var value = _ref2.value,
             oldValue = _ref2.oldValue;
+
+        var p2e = function p2e(s) {
+          return s.replace(/[۰-۹]/g, function (d) {
+            return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d);
+          });
+        };
+
+        var a2p = function a2p(s) {
+          return s.replace(/[٠-٩]/g, function (d) {
+            return '۰۱۲۳۴۵۶۷۸۹'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)];
+          });
+        };
+
+        value = p2e(a2p(value));
+        console.log('componentUpdated');
+        console.log(el);
+        console.log(value);
+        console.log(oldValue);
+        console.log('---------');
         el = queryInputElementInside(el);
         var isMaskChanged = isFunction(value) || maskToString(oldValue) !== maskToString(value);
 
