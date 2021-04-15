@@ -137,12 +137,13 @@ export function createDirective(directiveOptions = {}) {
      * @param {?String}                        oldValue
      */
     componentUpdated(el, { value, oldValue }) {
-      let elVal = el.value;
-      const p2e = (s) => s.replace(/[۰-۹]/g, (d) => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
-      const a2p = (s) => s.replace(/[٠-٩]/g, (d) => '۰۱۲۳۴۵۶۷۸۹'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]);
-      elVal = p2e(a2p(elVal));
-      el.value = elVal;
-
+      try {
+        let elVal = el.value;
+        const p2e = (s) => s.replace(/[۰-۹]/g, (d) => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+        const a2p = (s) => s.replace(/[٠-٩]/g, (d) => '۰۱۲۳۴۵۶۷۸۹'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]);
+        elVal = p2e(a2p(elVal));
+        el.value = elVal;
+      } catch { }
       el = queryInputElementInside(el);
 
       const isMaskChanged = isFunction(value)

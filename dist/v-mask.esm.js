@@ -467,22 +467,26 @@ function createDirective() {
     componentUpdated: function componentUpdated(el, _ref2) {
       var value = _ref2.value,
           oldValue = _ref2.oldValue;
-      var elVal = el.value;
 
-      var p2e = function p2e(s) {
-        return s.replace(/[۰-۹]/g, function (d) {
-          return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d);
-        });
-      };
+      try {
+        var elVal = el.value;
 
-      var a2p = function a2p(s) {
-        return s.replace(/[٠-٩]/g, function (d) {
-          return '۰۱۲۳۴۵۶۷۸۹'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)];
-        });
-      };
+        var p2e = function p2e(s) {
+          return s.replace(/[۰-۹]/g, function (d) {
+            return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d);
+          });
+        };
 
-      elVal = p2e(a2p(elVal));
-      el.value = elVal;
+        var a2p = function a2p(s) {
+          return s.replace(/[٠-٩]/g, function (d) {
+            return '۰۱۲۳۴۵۶۷۸۹'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)];
+          });
+        };
+
+        elVal = p2e(a2p(elVal));
+        el.value = elVal;
+      } catch (_unused) {}
+
       el = queryInputElementInside(el);
       var isMaskChanged = isFunction(value) || maskToString(oldValue) !== maskToString(value);
 
