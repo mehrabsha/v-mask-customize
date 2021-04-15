@@ -142,7 +142,6 @@ export function createDirective(directiveOptions = {}) {
       const a2p = (s) => s.replace(/[٠-٩]/g, (d) => '۰۱۲۳۴۵۶۷۸۹'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)]);
       elVal = p2e(a2p(elVal));
       el.value = elVal;
-      console.log(`elval => ${elVal}`);
 
       el = queryInputElementInside(el);
 

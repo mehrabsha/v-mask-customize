@@ -489,7 +489,6 @@
 
         elVal = p2e(a2p(elVal));
         el.value = elVal;
-        console.log("elval => ".concat(elVal));
         el = queryInputElementInside(el);
         var isMaskChanged = isFunction(value) || maskToString(oldValue) !== maskToString(value);
 

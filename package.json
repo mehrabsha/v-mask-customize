@@ -1,7 +1,7 @@
 {
-  "name": "v-mask",
-  "version": "0.0.0-semantically-released",
-  "description": "Tiny input mask library for Vue.js based on text-mask-core (~5kb) exposed as directive. No dependencies",
+  "name": "v-mask-persian",
+  "version": "1.0.0",
+  "description": "Tiny input mask library for Vue.js based on text-mask-core (~5kb) exposed as directive. No dependencies - add persian and arabic numbers support",
   "main": "dist/v-mask.js",
   "module": "dist/v-mask.esm.js",
   "scripts": {
